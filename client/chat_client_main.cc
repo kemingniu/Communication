@@ -56,8 +56,8 @@ void* Recv(void* arg)
 
 void Quit(int sig)
 {
-	//此处执行deleyte的作用是为了执行析构函数，尤其是g_window,不然，异常结束后后造成终端显示混乱.:
-//	(void)sig;
+	//此处执行delete的作用是为了执行析构函数，尤其是g_window,不然，异常结束后后造成终端显示混乱.:
+	(void)sig;
 	delete g_window;
 	delete g_client;
 	exit(0);
