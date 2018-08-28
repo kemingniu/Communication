@@ -20,8 +20,7 @@ namespace client{
 
 class ChatClient{
 public:
-//构造函数可以做一些简单的初始化,不推荐复杂的构造is_ok_;
-//也可以异常机制,
+
 	//客户端初始化，
 	int Init(const std::string& ip,short port);
 	
