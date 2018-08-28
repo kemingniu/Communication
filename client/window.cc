@@ -6,16 +6,16 @@ namespace client{
 	
 	Window::Window()
 	{
-		//设置字符编码
-		setlocale(LC_ALL,"");   // 另外需要在编译时连接 -lncursesw 代替 -lncurses
-		//对整个ncurses进行初始化
+		
+		setlocale(LC_ALL,"");   
+		
 		initscr();
-		//隐藏光标
+		
 		curs_set(0);
 	}
 	Window::~Window()
 	{
-		//对整个ncurses进行销毁动作
+		
 		endwin();
 	}
 	
@@ -106,8 +106,7 @@ namespace client{
 	{
 		char buf[1024*10] = {0};   //这个会造成瓶颈
 		wgetnstr(win, buf, sizeof(buf)-1);
-		*str = buf;   //string的复制操作时深拷贝。但是有些编译器会优化进行写实拷贝
-		//
+		*str = buf;   
 	}
 
 	
@@ -115,8 +114,7 @@ namespace client{
 	{
 		//由于显示的消息条数有限，不能无止境的插入
 		//msgs包含的消息数目超过一定的阈值，就把旧消息删除掉.
-		//不能随便删，需要持久化的保存在 1.文件中（什么样的格式组织文件内容的格式 json），   2.数据库也可以实现这个，用c语言操纵mysql，官网document，C API。
-		// connect  disconnect  mysql也是相当于一个服务器， 发送sql语句，拼装sql语句
+		
 		msgs_.push_back(msg);              //超过一定的长度，就换行，
 		int max_line = LINES*3/5-2;
 		if(max_line < 3)
@@ -131,60 +129,3 @@ namespace client{
 		}
 	}
 }//end of client
-
-
-#ifdef TEST_WINDOW
-
-#include<unistd.h>
-int main()
-{
-	client::Window win;
-	win.DrawHeader();
-	win.DrawInput();
-	win.AddMsg("vdfvgrsbsrbtb"); //构造几条数据
-	win.DrawOutput();
-	win.AddFriend("afafa|afareg");
-	win.DrawFriendList();
-	sleep(5);
-	return  0;
-}
-#endif
-/*
-Makefile
-
-.PHONY:clean
-all:test_win test_client
-
-test_win:window.cc
-	g++ $^ -o $@ -lpthread -lncursesw -std=c++11
-
-
-
-test_client:chat_client.cc
-	g++ $^ -o $@ -lpthread -ljsoncpp -lboost_filesystem -lboost_system
-.PHONY:clean
-clean:
-	rm test_client test_win
-	
-	
-	
-添加高级字符：
-字体管理器：
-fonts
-查找字符，
-	
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
