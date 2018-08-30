@@ -28,7 +28,8 @@ public:
 	int SetUserInfo(const std::string& name,const std::string& school);
 	//发送消息
 	void SendMsg(const std::string& msg);
-	//接受消息，接受的内容也是json格式的内容。
+	
+	//接受消息
 	void RecvMsg(server::Data* data); 
 	
 
