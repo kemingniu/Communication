@@ -16,9 +16,3 @@ int main(int argc,char* argv[])
 	
 	return 0;
 }
-
-/*
-main函数简单，可以编译成动态库或者静态库
-
-netstat -anp | grep 9090
-*/
