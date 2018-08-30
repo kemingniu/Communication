@@ -12,25 +12,19 @@ struct Data{
 	std::string name;
 	std::string school;
 	std::string msg;
-	//对于当前情况下，com取值要么为空字符串，要么为quit，如果quit表示客户端要退出
+	//对于当前情况下，cmd取值要么为空字符串，要么为quit，如果quit表示客户端要退出
 	std::string cmd;
 	
 	//
 	void Serialize(std::string* output){
-		//char buf[1024] = {0};
-		//sprintf(buf,"{name:%s,school:%s,msg:%s,cmd:%s}",name.c_str(),school.c_str(),msg.c_str(),cmd.c_str());
-		//*output = buf;
-		
-		//可以把json近似理解成unordered_map
-		
-		Json::Value value;   //保存数据的对象
+		Json::Value value;   
 		value["name"]   = name;
 		value["school"] = school;
 		value["msg"]    = msg;
 		value["cmd"]    = cmd;
 		
-		Json::FastWriter write; //序列化的操作
-		*output = write.write(value);            //80:46
+		Json::FastWriter write; 
+		*output = write.write(value);            
 		return ;
 	}
 	
