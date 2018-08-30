@@ -29,7 +29,7 @@ namespace client{
 	return 0;
 	}
 	
-	//用户输入hehe，msg=“hehe”，不光光有msg，换要有姓名，学校，等信息，还要序列化
+	
 	void ChatClient::SendMsg(const std::string& msg)
 	{
 		
@@ -66,11 +66,5 @@ namespace client{
 	}
 	
 }//end of client
-
-
-
-
-
-
 
 
