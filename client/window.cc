@@ -22,9 +22,9 @@ namespace client{
 	//绘制标题子窗口
 	void Window::DrawHeader()
 	{
-		//LINES是ncueses提供的宏，表示当前窗口的最大行数
+		
 		int h = LINES / 5;
-		//COLS是ncurses提供的宏，表示当前窗口的最大列数
+		
 		int w = COLS;
 		int y = 0;
 		int x = 0;
