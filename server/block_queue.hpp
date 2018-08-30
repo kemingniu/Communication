@@ -7,8 +7,8 @@
 
 namespace server{
 
-template<typename T>  //类模板
-class BlockQueue{  //基于数组实现队列
+template<typename T>  
+class BlockQueue{  
 public:
 
 	BlockQueue(size_t s = 1024)
@@ -17,8 +17,8 @@ public:
 	,tail_(0)
 	,size_(0)
 	{  
-		sem_init(&sem_data_,0,0);    //第二个参数非零用于进程之间，0用于线程之间。
-     	        sem_init(&sem_blank_,0,s);   //有多少个空格可以有
+		sem_init(&sem_data_,0,0);    
+     	        sem_init(&sem_blank_,0,s);   
 	}
 	~BlockQueue()
 	{
@@ -58,7 +58,5 @@ private:
 	size_t head_;  //指定队首队尾   size大小
 	size_t tail_;
 	size_t size_;
-	//由于此处只一个单生产者但消费者模型的BlockQueue，因此可以不用加互斥锁。改动 也不难。
-	//sem_t sem_lock_;
 };
 }//end server
