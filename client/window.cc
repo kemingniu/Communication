@@ -37,9 +37,9 @@ namespace client{
 	//绘制输入框
 	void Window::DrawInput()
 	{
-		//LINES是ncueses提供的宏，表示当前窗口的最大行数
+		
 		int h = LINES / 5;
-		//COLS是ncurses提供的宏，表示当前窗口的最大列数
+		
 		int w = COLS;
 		int y = LINES*4/5;
 		int x = 0;
@@ -104,7 +104,7 @@ namespace client{
 	//从窗口中读字符串
 	void Window::GetStrFromWin(WINDOW* win,std::string* str)
 	{
-		char buf[1024*10] = {0};   //这个会造成瓶颈
+		char buf[1024*10] = {0};  
 		wgetnstr(win, buf, sizeof(buf)-1);
 		*str = buf;   
 	}
@@ -112,8 +112,7 @@ namespace client{
 	
 	void Window::AddMsg(const std::string& msg)
 	{
-		//由于显示的消息条数有限，不能无止境的插入
-		//msgs包含的消息数目超过一定的阈值，就把旧消息删除掉.
+		
 		
 		msgs_.push_back(msg);              //超过一定的长度，就换行，
 		int max_line = LINES*3/5-2;
