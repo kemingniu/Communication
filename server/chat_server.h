@@ -42,7 +42,7 @@ private:
 	//value ip地址+端口号（struct sockaddr_in）
 	std::unordered_map<std::string,sockaddr_in> online_friend_list_;    
 	
-	//BlockQueue<std::string> queue_;  //使用一个阻塞队列作为生产者消费的交易模型.
+	
 	BlockQueue<Context> queue_;
 	int sock_;                       
 	};
